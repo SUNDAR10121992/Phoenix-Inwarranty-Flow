@@ -35,11 +35,43 @@ jobs:
              -r cli,htmlextra
 
       - name: Newman Report
-        if: always()     # it ensures that archived executes irrespective of previos steps has passed or Not
+        if: always()     # it ensures that archived executes irrespective of previous steps has passed or Not
         uses: actions/upload-artifact@v6.0.0
         with:
           name: Newman report
           path: newman/*.html
+      
+      - name: Creating GitHub page branch
+        if: always()
+        uses: peaceiris/actions-gh-pages@v4.0.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: newman/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+       
+       
              
               
               
