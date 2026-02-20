@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
   schedule:
     - cron: 30 02 * * * 
-    - cron: 00 17 * * *
+    - cron: 45 05 * * *
     - cron: 00 06 * * 1-5
 
 jobs:
