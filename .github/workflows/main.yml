@@ -32,10 +32,11 @@ jobs:
              newman run 'In-WarrantyFlow Collection_Ext_CSV.postman_collection.json' \
              -e QA.postman_environment.json \
              -d testData.csv \
-             -r cli,htmlextra
+             -r cli,htmlextra \
+             --reporter-htmlextra-export ./newman/index.html  
 
       - name: Newman Report
-        if: always()     # it ensures that archived executes irrespective of previous steps has passed or Not
+        if: always()     # it ensures  that archived executes irrespective of previous steps has passed or Not
         uses: actions/upload-artifact@v6.0.0
         with:
           name: Newman report
