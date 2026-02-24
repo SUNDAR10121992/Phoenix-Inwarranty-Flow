@@ -8,7 +8,7 @@ The latest report is mailed to the team members using GMAIL SMTP.
 
 ## About ME ##
 Hi My name is Sundar Kande . I have 3.5 Year Experince in Automation testing My skill set includes UI Automation with selenium WebDriver , And for API testing I used RestAssured and Postman 
-Connect with me over : ![Linkd In](https://www.linkedin.com/in/sundar-kande-872060243/)
+Connect with me over : (https://www.linkedin.com/in/sundar-kande-872060243/)
 
 ## Testing Coverage ##
 1. Happy Flow Testing
