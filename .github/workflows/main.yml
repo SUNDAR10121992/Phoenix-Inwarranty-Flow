@@ -6,12 +6,12 @@ on:
   workflow_dispatch:
   schedule:
     - cron: 30 02 * * * 
-    - cron: 00 17 * * *
+    - cron: 45 05 * * *
     - cron: 00 06 * * 1-5
 
 jobs:
   run-postman-test:
-    runs-on: ubuntu-latest
+    runs-on: EC2 github for postman
 
     steps:
       - name: checkout the code / get code
@@ -32,16 +32,51 @@ jobs:
              newman run 'In-WarrantyFlow Collection_Ext_CSV.postman_collection.json' \
              -e QA.postman_environment.json \
              -d testData.csv \
-             -r cli,htmlextra
+             -r cli,htmlextra \
+             --reporter-htmlextra-export ./newman/index.html  
 
       - name: Newman Report
-        if: always()     # it ensures that archived executes irrespective of previos steps has passed or Not
+        if: always()     # it ensures  that archived executes irrespective of previous steps has passed or Not
         uses: actions/upload-artifact@v6.0.0
         with:
           name: Newman report
           path: newman/*.html
-             
-              
+      
+      - name: Creating GitHub page branch
+        if: always()
+        uses: peaceiris/actions-gh-pages@v4.0.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: newman/
+      
+      - name: Sending Email Notification
+        if: always()
+        uses: dawidd6/action-send-mail@v9
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ secrets.EMAIL_USERNAME }}
+          password: ${{ secrets.EMAIL_PASSWORD }} # Not Gmail pass , use app password
+          subject: Phoenix Inwarrenty flow Test Execution Notification
+          to: sundarkande445@gmail.com
+          from: ${{ secrets.EMAIL_USERNAME }}
+          body: |
+                 Hi , 
+                 Phenoix Inwarranty Flow has been executed . The report has beedn published and the
+                 URL is : https://sundar10121992.github.io/Phoenix-Inwarranty-Flow/
+          
+          
+          
+          
+          
+          
+          
+
+        
+        
+            
+        
+        
               
           
             
