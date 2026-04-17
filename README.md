@@ -1,12 +1,5 @@
 
 ```
-Phoenix Inwarranty flow
-├─ In-WarrantyFlow Collection_Ext_CSV.postman_collection.json
-├─ QA.postman_environment.json
-└─ testData.csv
-
-```
-=======
 # Postman API Automation Integration with GitHub Actions #
 
 This repository is a demonstration for POC for intigrating postman test with GitHub Actions. The tests are written in postman and they are executed in a VM with the help of Newman and Newman-reporter-htmlextra.
