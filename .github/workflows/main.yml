@@ -20,7 +20,7 @@ jobs:
       - name: Install Nodejs and npm
         uses: actions/setup-node@v6.2.0
         with:
-          node-version: 22
+          node-version: '24'
 
       - name: Install Newman and Html-extra globally
         run: |
@@ -44,14 +44,14 @@ jobs:
       
       - name: Creating GitHub page branch
         if: always()
-        uses: peaceiris/actions-gh-pages@v4.0.0
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: newman/
       
       - name: Sending Email Notification
         if: always()
-        uses: dawidd6/action-send-mail@v9
+        uses: dawidd6/action-send-mail@v10
         with:
           server_address: smtp.gmail.com
           server_port: 465
