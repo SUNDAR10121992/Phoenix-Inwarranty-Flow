@@ -11,7 +11,7 @@ on:
 
 jobs:
   run-postman-test:
-    runs-on: EC2 github for postman
+    runs-on: ubuntu-latest
 
     steps:
       - name: checkout the code / get code
